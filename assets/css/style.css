@@ -375,6 +375,23 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .badge b { font-size: 17px; font-weight: 600; color: var(--cream); }
 .badge span { font-size: 13px; color: rgb(255 255 255 / .92); }
 
+.hero__loc {                           /* тег локации — дублирует блок «Расположение» */
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 6px 14px 6px 10px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / .12);
+  font-size: 13px;
+  line-height: 1.3;
+  color: rgb(255 255 255 / .92);
+  transition: background-color .3s;
+}
+.hero__loc:hover { background: rgb(255 255 255 / .2); }
+.hero__loc .ico { width: 16px; height: 16px; color: var(--cream); }
+
 .hero__title {
   max-width: 17ch;
   margin-bottom: 12px;
@@ -384,6 +401,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   color: var(--cream);
   text-wrap: balance;
 }
+.hero__name { white-space: nowrap; }      /* «Город-парк» не переносится по дефису */
 .hero__price {
   display: inline-block;
   margin-top: .3em;
@@ -420,6 +438,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .plaque__edge { display: block; position: absolute; top: 0; right: calc(100% - 1px); width: 96px; height: 100%; fill: var(--green); }
   .hero__badges { position: static; margin-bottom: 36px; }
   .badge { background: rgb(17 82 49 / .55); }
+  .hero__loc { margin-bottom: 20px; font-size: 14px; }
   .hero__title { font-size: clamp(38px, 2.9vw + 6px, 60px); max-width: 18ch; margin-bottom: 16px; }
   .hero__sub { font-size: 17px; margin-bottom: 32px; }
 }
@@ -436,6 +455,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .hero__plaque { animation: gp-up 1.2s var(--ease-expo) .1s backwards; }
 @keyframes gp-lift { from { transform: translateY(28px); } }
 .hero__title { animation: gp-lift 1.2s var(--ease-expo) .25s backwards; }   /* без прозрачности — заголовок сразу засчитывается как LCP */
+.hero__loc { animation: gp-rise .9s var(--ease-expo) .2s backwards; }
 @keyframes gp-scale { from { transform: scale(.72); } }
 .hero__price { animation: gp-scale .9s cubic-bezier(.34, 1.56, .64, 1) .6s backwards; }
 .hero__sub { animation: gp-rise .9s var(--ease-expo) .6s backwards; }
@@ -832,6 +852,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   border-color: var(--green);
   background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M5.5 11.5l3.6 3.6L16.5 7.5' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
 }
+.consent + .consent { margin-top: -6px; }
 .consent a { text-decoration: underline; text-underline-offset: 3px; }
 .consent.is-error { color: var(--error); }
 .consent.is-error input { border-color: var(--error); }
@@ -903,22 +924,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .loc { padding: 72px 0 80px; }
 .loc__grid { display: grid; gap: 24px; }
 .loc .h2 { max-width: 16ch; }
-.loc__links { display: flex; flex-wrap: wrap; gap: 0 24px; margin-top: 8px; }
-.link-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  color: var(--green);
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-decoration-color: rgb(61 123 82 / .35);
-  text-underline-offset: 5px;
-  min-height: 44px;
-  transition: text-decoration-color .3s;
-}
-.link-arrow:hover { text-decoration-color: currentColor; }
-.link-arrow .ico { width: 18px; height: 18px; }
 
 /* Карта: подложка — SVG из OpenStreetMap, поверх — метки и маршрут */
 .map {
@@ -996,6 +1001,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 }
 .pin__lbl b { margin-left: 4px; color: var(--green); }
 .pin:hover .pin__lbl, .pin.is-active .pin__lbl { opacity: 1; transform: translate(-50%, 0) scale(.9); }
+.pin--below .pin__lbl { top: calc(100% + 8px); bottom: auto; }
 .pin--home { z-index: 4; width: 54px; height: 54px; margin: -27px 0 0 -27px; background: var(--green); color: var(--cream); cursor: default; }
 .pin--home::before, .pin--home::after {    /* пульс вокруг дома */
   content: "";
@@ -1047,7 +1053,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .map__lbl { font-size: 12px; }
   .time { grid-template-columns: 150px 24px 1fr; padding: 18px 24px; }
   .infra { padding: 36px; }
-  .infra__list { grid-template-columns: repeat(4, 1fr); }
 }
 @media (min-width: 1024px) {
   .loc { padding: 128px 0; }
@@ -1095,9 +1100,9 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 @media (min-width: 768px) { .offers { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1024px) {
   .terms { padding: 128px 0; }
-  .offers { grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  .offers { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 48px; }
   .offer { min-height: 280px; padding: 28px; border-radius: 32px; }
-  .offer__big { font-size: clamp(56px, 4.6vw, 80px); }
+  .offer__big { font-size: clamp(46px, 4.4vw, 72px); }   /* «12,99%» и «1,7 млн» помещаются в карточку от 1024px */
 }
 
 /* ---------- Фото-пауза ---------- */

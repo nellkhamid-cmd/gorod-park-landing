@@ -196,12 +196,11 @@
       f.classList.toggle('is-error', !ok);
       if (!ok) { shake(f); first = first || inp; }
     });
-    const c = $('.consent', form);
-    if (c) {
-      const ok = $('input', c).checked;
-      c.classList.toggle('is-error', !ok);
-      if (!ok) { shake(c); first = first || $('input', c); }
-    }
+    $$('.consent input[required]', form).forEach((inp) => {   // согласие на рассылку необязательное — не проверяем
+      const c = inp.closest('.consent');
+      c.classList.toggle('is-error', !inp.checked);
+      if (!inp.checked) { shake(c); first = first || inp; }
+    });
     if (first) first.focus();
     return !first;
   }
@@ -233,9 +232,10 @@
   function formData(form) {
     const data = {};
     new FormData(form).forEach((v, k) => {
-      if (k === 'consent') return;
+      if (k === 'consent' || k === 'promo') return;
       data[k] = data[k] ? [].concat(data[k], v) : v;
     });
+    if (form.elements.promo) data.promo_consent = form.elements.promo.checked;   // согласие на информацию о скидках
     return data;
   }
 
@@ -471,6 +471,7 @@
       const p = pins.find((x) => x.dataset.key === key);
       if (!p) return;
       const tx = +p.dataset.x, ty = +p.dataset.y;
+      pins.forEach((x) => x.classList.toggle('pin--below', x === p && ty > HY));   // подпись уходит от дома, не налезает на его подпись
       const mx = (HX + tx) / 2, my = (HY + ty) / 2;
       const dx = tx - HX, dy = ty - HY;
       const k = 0.22;                                  // изгиб дуги
