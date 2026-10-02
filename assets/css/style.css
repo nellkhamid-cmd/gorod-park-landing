@@ -1053,6 +1053,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .map__lbl { font-size: 12px; }
   .time { grid-template-columns: 150px 24px 1fr; padding: 18px 24px; }
   .infra { padding: 36px; }
+  .infra__list { grid-template-columns: repeat(4, 1fr); }
 }
 @media (min-width: 1024px) {
   .loc { padding: 128px 0; }
