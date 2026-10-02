@@ -788,6 +788,14 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 }
 .opt input:focus-visible + span { outline: 2px solid var(--green); outline-offset: 2px; }
 
+/* Первый вопрос: варианты с миниатюрой планировки, кружок выбора — рядом с подписью под картинкой */
+.qz__opts--plans { grid-template-columns: 1fr 1fr; }
+.opt--plan span { flex-flow: row wrap; justify-content: center; gap: 6px 8px; padding: 8px 8px 12px; }
+.opt--plan img { order: -1; flex: 0 0 100%; width: 100%; max-width: 180px; height: auto; margin-inline: auto; mix-blend-mode: multiply; }   /* белый фон картинки не спорит с заливкой выбранной карточки */
+.opt--plan span::before { position: relative; top: auto; left: auto; margin: 0; flex: none; }
+.qz__steps { container-type: inline-size; }
+@container (min-width: 520px) { .qz__opts--plans { grid-template-columns: repeat(4, 1fr); } }   /* в один ряд, когда карточка квиза достаточно широкая */
+
 .qz__nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
 .qz__back { padding: 12px 4px; border: 0; background: none; font-weight: 600; color: var(--ink-soft); cursor: pointer; transition: opacity .3s; }
 .qz__back:disabled { opacity: 0; pointer-events: none; }
