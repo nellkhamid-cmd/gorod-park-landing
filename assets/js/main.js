@@ -512,20 +512,6 @@
   }
 
   /* ---------------------------------------------------------------
-     9. Видео первого экрана (только телефон, без режима экономии трафика)
-     --------------------------------------------------------------- */
-  const video = $('.hero__video');
-  function startHeroVideo() {
-    const c = navigator.connection || {};
-    const slow = c.saveData || /(^|-)2g|3g/.test(c.effectiveType || '');
-    if (!video || REDUCED || slow || !matchMedia(MOBILE_MQ).matches) return;
-    video.src = video.dataset.src;
-    video.addEventListener('playing', () => video.classList.add('is-playing'), { once: true });
-    const p = video.play();
-    if (p && p.catch) p.catch(() => { /* автозапуск запрещён — остаётся постер */ });
-  }
-
-  /* ---------------------------------------------------------------
      11. ДВИЖЕНИЕ
      --------------------------------------------------------------- */
   function splitWords(el) {
@@ -722,7 +708,7 @@
 
   /* ---------------------------------------------------------------
      12. Старт: первый экран появляется на CSS сразу, анимации скролла
-         собираются после первой отрисовки порциями, видео — после загрузки
+         собираются после первой отрисовки порциями
      --------------------------------------------------------------- */
   const boot = () => {
     if (MOTION) initMotion().then(initLenis);
@@ -730,6 +716,4 @@
   };
   if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 1000 });
   else setTimeout(boot, 200);
-  if (document.readyState === 'complete') setTimeout(startHeroVideo, 800);
-  else window.addEventListener('load', () => setTimeout(startHeroVideo, 800), { once: true });
 })();
