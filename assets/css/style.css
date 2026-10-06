@@ -1231,6 +1231,18 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .ftr__bottom a:hover { text-decoration-color: currentColor; }
 .legal { display: grid; gap: 6px; padding-top: 8px; font-family: var(--font-legal); font-weight: 400; font-size: 13px; line-height: 1.45; letter-spacing: .01em; color: rgb(255 255 255 / .58); }
 .legal a { text-decoration: underline; }
+.legal__big {                          /* ПСК и предупреждение о рисках — крупно, основным шрифтом */
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: #FFFFFF;
+  overflow-wrap: break-word;
+}
+.legal__big + .legal__big { margin-top: 10px; }
+.legal__big + p:not(.legal__big) { margin-top: 16px; }
+@media (min-width: 1024px) { .legal__big { font-size: clamp(40px, 3.3vw, 48px); } }
 @media (min-width: 768px) {
   .ftr { padding-bottom: 48px; }
   .ftr__cols { grid-template-columns: repeat(3, 1fr); }
