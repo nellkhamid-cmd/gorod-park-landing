@@ -8,7 +8,6 @@
 
 @font-face { font-family: "Raleway"; src: url("../fonts/Raleway-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Raleway"; src: url("../fonts/Raleway-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Akrobat"; src: url("../fonts/Akrobat-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
 @font-face { font-family: "Akrobat"; src: url("../fonts/Akrobat-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 
 @property --l { syntax: '<length>'; inherits: false; initial-value: 0px; }
