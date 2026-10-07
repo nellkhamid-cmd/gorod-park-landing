@@ -1107,7 +1107,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .terms__more { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .terms__more span { padding: 9px 16px; border: 1px solid rgb(255 230 172 / .5); border-radius: 999px; font-size: 14px; }
 .terms__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 36px; }
-.terms__legal-link { font-size: 14px; color: rgb(255 255 255 / .72); text-decoration: underline; text-underline-offset: 4px; }
 @media (min-width: 768px) { .offers { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1024px) {
   .terms { padding: 128px 0; }
