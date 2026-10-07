@@ -136,25 +136,37 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.classList.contains('is-open')) toggleMenu(false); });
 
   /* ---------------------------------------------------------------
-     4. Модальное окно «Узнать цену»
+     4. Модальные окна: «Узнать цену» и квиз
      --------------------------------------------------------------- */
   const modal = $('#modal-price');
-  function openModal() {
-    if (!modal) return;
-    $$('.modal__view', modal).forEach((v, i) => v.classList.toggle('is-active', i === 0));
-    modal.showModal();
+  const quizModal = $('#modal-quiz');
+  const quizSrc = $('#qz');
+  if (quizModal && quizSrc) {                       // квиз в окне — копия квиза из блока 7, вопросы правятся в одном месте
+    const copy = quizSrc.cloneNode(true);
+    copy.classList.remove('ani-rise');
+    $$('[id]', copy).concat(copy).forEach((el) => { el.id = 'pop-' + el.id; });
+    $$('label[for]', copy).forEach((l) => { l.htmlFor = 'pop-' + l.htmlFor; });
+    $('.modal__box', quizModal).appendChild(copy);
+  }
+  function openModal(dlg) {
+    if (!dlg) return;
+    $$('.modal__view', dlg).forEach((v, i) => v.classList.toggle('is-active', i === 0));
+    dlg.showModal();
     lockScroll(true);
-    requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('is-in')));
-    setTimeout(() => { const f = $('.field__input', modal); if (f && matchMedia('(pointer: fine)').matches) f.focus(); }, 350);
+    requestAnimationFrame(() => requestAnimationFrame(() => dlg.classList.add('is-in')));
+    setTimeout(() => { const f = $('.lead-form .field__input', dlg); if (f && matchMedia('(pointer: fine)').matches) f.focus(); }, 350);
   }
-  function closeModal() {
-    if (!modal.open) return;
-    modal.classList.remove('is-in');
-    setTimeout(() => { modal.close(); lockScroll(false); }, 320);
+  function closeModal(dlg) {
+    if (!dlg.open) return;
+    dlg.classList.remove('is-in');
+    setTimeout(() => { dlg.close(); lockScroll(false); }, 320);
   }
-  $$('[data-modal="price"]').forEach((b) => b.addEventListener('click', openModal));
-  modal.addEventListener('cancel', (e) => { e.preventDefault(); closeModal(); });
-  modal.addEventListener('click', (e) => { if (e.target === modal || e.target.closest('[data-close]')) closeModal(); });
+  $$('[data-modal]').forEach((b) => b.addEventListener('click', () => openModal($('#modal-' + b.dataset.modal))));
+  [modal, quizModal].forEach((dlg) => {
+    if (!dlg) return;
+    dlg.addEventListener('cancel', (e) => { e.preventDefault(); closeModal(dlg); });
+    dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.closest('[data-close]')) closeModal(dlg); });
+  });
 
   /* ---------------------------------------------------------------
      5. Телефонная маска и формы
@@ -274,10 +286,9 @@
   });
 
   /* ---------------------------------------------------------------
-     6. Квиз: три вопроса → контакт → спасибо
+     6. Квиз: три вопроса → контакт → спасибо (в блоке 7 и в окне)
      --------------------------------------------------------------- */
-  const qz = $('#qz');
-  if (qz) {
+  $$('.qz').forEach((qz) => {
     const steps = $$('.qz__step', qz);
     const next = $('.qz__next', qz);
     const back = $('.qz__back', qz);
@@ -313,7 +324,7 @@
       render(dirBack);
       const h1 = box.offsetHeight;                   // высота карточки плавно подстраивается под шаг
       if (h0 !== h1 && box.animate && !REDUCED) box.animate([{ height: h0 + 'px' }, { height: h1 + 'px' }], { duration: 480, easing: 'cubic-bezier(.2,.8,.2,1)' });
-      if (step === 4 && matchMedia('(pointer: fine)').matches) setTimeout(() => $('#qz-name').focus({ preventScroll: true }), 420);
+      if (step === 4 && matchMedia('(pointer: fine)').matches) setTimeout(() => $('.field__input', qz).focus({ preventScroll: true }), 420);
     }
     qz.addEventListener('change', (e) => {
       if (!e.target.matches('.opt input')) return;
@@ -328,7 +339,7 @@
       submitWithMorph(qz, 'quiz', () => go(5));
     });
     render();
-  }
+  });
 
   /* ---------------------------------------------------------------
      7. Табы планировок (ui-motion: JS считает края, CSS их анимирует)

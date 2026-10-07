@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/Raleway-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Raleway-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=15">
+  <link rel="stylesheet" href="assets/css/style.css?v=16">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -438,7 +438,7 @@
         <span>Военная ипотека</span><span>Материнский капитал</span><span>Трейд-ин</span>
       </div>
       <div class="terms__cta ani-fade">
-        <a class="btn btn--cream" href="#quiz" data-scroll>Подобрать квартиру</a>
+        <button class="btn btn--cream" type="button" data-modal="quiz">Подобрать комфортный вариант</button>
       </div>
     </div>
   </section>
@@ -638,6 +638,15 @@
   </div>
 </dialog>
 
+<!-- Окно с квизом (кнопка в «Условиях покупки»). Сам квиз скрипт копирует из блока 7 -->
+<dialog class="modal modal--quiz" id="modal-quiz" aria-labelledby="quiz-pop-title">
+  <div class="modal__box">
+    <button class="modal__close" type="button" data-close aria-label="Закрыть"><svg class="ico"><use href="#i-close"/></svg></button>
+    <svg class="modal__mark" aria-hidden="true"><use href="#tulip"/></svg>
+    <h2 class="modal__title" id="quiz-pop-title">Ответьте на&nbsp;три вопроса&nbsp;— подберём комфортный вариант</h2>
+  </div>
+</dialog>
+
 <div class="toast" role="status" aria-live="polite">
   <span class="toast__icon" aria-hidden="true"><svg width="14" height="14"><use href="#i-check"/></svg></span>
   <span class="toast__text">Заявка отправлена</span>
@@ -654,6 +663,6 @@
 <script src="assets/js/vendor/gsap.min.js" defer></script>
 <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/js/vendor/SplitText.min.js" defer></script>
-<script src="assets/js/main.js?v=7" defer></script>
+<script src="assets/js/main.js?v=8" defer></script>
 </body>
 </html>

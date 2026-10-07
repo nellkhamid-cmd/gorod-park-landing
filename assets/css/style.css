@@ -1305,11 +1305,14 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .modal__view.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 260ms 130ms, transform var(--t-spring) var(--spring) 130ms, visibility 0s; }
 .modal__title { max-width: 17ch; margin-bottom: 20px; padding-right: 36px; font-size: 24px; line-height: 1.2; letter-spacing: -.01em; }
 .modal__thanks p { margin-bottom: 24px; color: var(--ink-soft); }
+.modal--quiz .modal__title { max-width: 24ch; }
+.modal--quiz .qz { padding: 0; border-radius: 0; box-shadow: none; }   /* окно само служит карточкой квиза */
 @media (min-width: 768px) {
   .modal[open] { align-items: center; }
   .modal__box { width: 480px; padding: 40px; border-radius: 32px; opacity: 0; transform: translateY(24px) scale(.96); transition: transform .3s var(--ease-out), opacity .25s; }
   .modal.is-in .modal__box { opacity: 1; transform: none; transition: transform var(--t-spring) var(--spring), opacity .3s; }
   .modal__title { font-size: 28px; }
+  .modal--quiz .modal__box { width: 640px; }
 }
 
 /* ---------- Тост ---------- */
