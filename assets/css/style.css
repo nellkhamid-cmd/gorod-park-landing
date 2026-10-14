@@ -267,10 +267,8 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .hdr__meta { display: flex; align-items: center; gap: 28px; margin-right: auto; font-size: 14px; }
   .hdr__logo { margin-right: 36px; }
   .hdr__date { padding: 6px 14px; border: 1px solid currentColor; border-radius: 999px; opacity: .9; }
-  .hdr__addr { display: none; align-items: center; gap: 6px; opacity: .85; }
-  .hdr__addr .ico { width: 16px; height: 16px; }
 }
-@media (min-width: 1280px) { .hdr__addr { display: inline-flex; } .logo { width: 164px; } }
+@media (min-width: 1280px) { .logo { width: 164px; } }
 
 /* ---------- Меню (выезд снизу; открытие 0.7с, закрытие 0.35с — как у LUCE) ---------- */
 .menu {
@@ -411,7 +409,9 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   border-radius: 999px;
   white-space: nowrap;
 }
-.hero__sub { margin-bottom: 22px; font-size: 15px; color: rgb(255 255 255 / .92); }
+.hero__dev { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; font-size: 15px; line-height: 1.2; color: rgb(255 255 255 / .92); }
+.hero__talan { flex: none; width: 86px; height: 16px; fill: #FFFFFF; }   /* брендбук: логотип девелопера не крупнее логотипа проекта */
+.hero__dev span { padding-left: 12px; border-left: 1px solid rgb(255 255 255 / .35); }
 .hero__btns { display: flex; flex-wrap: wrap; gap: 10px; }
 .hero__btns .btn { flex: 1 1 200px; }
 
@@ -442,7 +442,9 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .badge { background: rgb(17 82 49 / .55); }
   .hero__loc { margin-bottom: 20px; font-size: 14px; }
   .hero__title { font-size: clamp(38px, 2.9vw + 6px, 60px); max-width: 18ch; margin-bottom: 16px; }
-  .hero__sub { font-size: 17px; margin-bottom: 32px; }
+  .hero__dev { gap: 14px; font-size: 17px; margin-bottom: 32px; }
+  .hero__talan { width: 108px; height: 20px; }
+  .hero__dev span { padding-left: 14px; }
 }
 
 /* Вход первого экрана — на CSS: стартует с первой отрисовкой и не ждёт скриптов.
@@ -460,7 +462,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .hero__loc { animation: gp-rise .9s var(--ease-expo) .2s backwards; }
 @keyframes gp-scale { from { transform: scale(.72); } }
 .hero__price { animation: gp-scale .9s cubic-bezier(.34, 1.56, .64, 1) .6s backwards; }
-.hero__sub { animation: gp-rise .9s var(--ease-expo) .6s backwards; }
+.hero__dev { animation: gp-rise .9s var(--ease-expo) .6s backwards; }
 .hero__btns .btn { animation: gp-rise .9s var(--ease-expo) .7s backwards; }
 .hero__btns .btn + .btn { animation-delay: .78s; }
 .badge { animation: gp-pop 1s cubic-bezier(.34, 1.56, .64, 1) .9s backwards; }

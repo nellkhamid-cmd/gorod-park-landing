@@ -43,7 +43,7 @@
 ## Хостинг — обязательно
 - Включить сжатие brotli или gzip для `html, css, js, svg` (CSS 60 → 13 КБ, JS 154 → 57 КБ, карта 171 → 65 КБ).
 - Кэш для `assets/*`: `Cache-Control: public, max-age=31536000, immutable`; для `index.html` — `no-cache`.
-  При изменении CSS/JS менять номер версии в `index.html` (`style.css?v=16`, `main.js?v=8`).
+  При изменении CSS/JS менять номер версии в `index.html` (`style.css?v=17`, `main.js?v=8`).
 - HTTP/2 или HTTP/3.
 
 ## Анимации
