@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/Raleway-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Raleway-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=17">
+  <link rel="stylesheet" href="assets/css/style.css?v=19">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -126,44 +126,35 @@
         <h1 class="hero__title" id="hero-title">Квартиры в&nbsp;первом доме нового жилого района <span class="hero__name">«Город-парк»</span> <span class="hero__price">от&nbsp;4,1&nbsp;млн&nbsp;руб.</span></h1>
         <p class="hero__dev"><svg class="hero__talan" role="img" aria-label="Талан"><use href="#talan-logo"/></svg><span>федеральный девелопер</span></p>
         <div class="hero__btns">
-          <a class="btn btn--cream" href="#quiz" data-scroll>Подобрать квартиру</a>
+          <button class="btn btn--cream" type="button" data-modal="quiz">Подобрать квартиру</button>
           <button class="btn btn--line" type="button" data-modal="price">Узнать цену</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 3. ЦИФРЫ ДОВЕРИЯ ============ -->
-  <section class="trust" aria-label="Цифры о проекте">
-    <ul class="trust__list">
-      <li class="trust__item trust__item--dev ani-rise">
-        <svg class="trust__talan" role="img" aria-label="Талан"><use href="#talan-logo"/></svg>
-        <span class="trust__label">Федеральный девелопер «Талан»</span>
-      </li>
-      <li class="trust__item ani-rise">
-        <span class="trust__num" data-count="12">12</span>
-        <span class="trust__label">городов присутствия</span>
-      </li>
-      <li class="trust__item ani-rise">
-        <span class="trust__num"><span data-count="32">32</span>&nbsp;га</span>
-        <span class="trust__label">площадь района «Город-Парк»</span>
-      </li>
-      <li class="trust__item ani-rise">
-        <span class="trust__num" data-count="13">13</span>
-        <span class="trust__label">очередей развития</span>
-      </li>
-      <li class="trust__item ani-rise">
-        <span class="trust__num">IV&nbsp;кв. 2027&nbsp;г.</span>
-        <span class="trust__label">сдача 1 очереди</span>
-      </li>
-    </ul>
+  <!-- ============ 3. ИНФРАСТРУКТУРА ПРОЕКТА ============ -->
+  <section class="strip" aria-labelledby="infra-title">
+    <div class="infra">
+      <h3 class="infra__title" id="infra-title">Инфраструктура проекта</h3>
+      <ul class="infra__list">
+        <li class="ani-rise"><b>2&nbsp;км</b><span>прогулочный бульвар</span></li>
+        <li class="ani-rise"><b>4</b><span>детско-спортивные площадки</span></li>
+        <li class="ani-rise"><b>до&nbsp;9</b><span>квартир на&nbsp;этаже</span></li>
+        <li class="ani-rise"><b>8</b><span>секций</span></li>
+      </ul>
+    </div>
   </section>
 
   <!-- ============ 4. О ПРОЕКТЕ ============ -->
   <section class="about" id="about" aria-labelledby="about-title">
     <div class="wrap">
       <p class="eyebrow ani-fade">О проекте</p>
-      <h2 class="about__lead" id="about-title" data-words>Город-парк — это комфортная застройка для людей, которые устали от тесных парковок и жизни в плотной застройке</h2>
+      <h2 class="about__lead" id="about-title" data-words>Город-парк — новый район на 32 гектарах, где есть всё для жизни, работы и отдыха</h2>
+      <div class="about__text ani-fade">
+        <p>Сердце района — двухкилометровый прогулочный бульвар с&nbsp;кафе и&nbsp;магазинами. Для детей и&nbsp;спорта&nbsp;— 4&nbsp;площадки и&nbsp;центральный плейхаб с&nbsp;трёхметровой горкой, а&nbsp;зимой на&nbsp;пруду заливают каток площадью 300&nbsp;м². Для работы рядом с&nbsp;домом предусмотрен лайт-индастриал на&nbsp;10&nbsp;000&nbsp;м².</p>
+        <p>Здесь удобно всем: семьям с&nbsp;детьми и&nbsp;молодёжи, тем, кто ценит тишину, и&nbsp;тем, кто живёт в&nbsp;активном ритме.</p>
+      </div>
     </div>
   </section>
 
@@ -207,14 +198,14 @@
       <article class="adv__card">
         <div class="adv__img"><img src="assets/img/interior-living.webp" alt="Светлая кухня-гостиная с обеденной зоной" loading="lazy" decoding="async"></div>
         <div class="adv__body">
-          <h3 class="h3">Пространство квартиры</h3>
-          <p>Малоэтажный формат до&nbsp;9&nbsp;этажей, потолки до&nbsp;2,7&nbsp;м, планировки с&nbsp;двумя санузлами, гардеробными и&nbsp;кухней-гостиной, горизонтальное отопление, колясочные и&nbsp;кладовые</p>
+          <h3 class="h3">Планировки под любой стиль жизни</h3>
+          <p>Малоэтажный формат до&nbsp;9&nbsp;этажей, потолки 2,7&nbsp;м, планировки с&nbsp;двумя санузлами, гардеробными и&nbsp;кухней-гостиной, горизонтальное отопление, колясочные и&nbsp;кладовые</p>
         </div>
       </article>
       <article class="adv__card">
         <div class="adv__img"><img src="assets/img/commerce-960.webp" srcset="assets/img/commerce-960.webp 960w, assets/img/commerce-1280.webp 1280w, assets/img/commerce-1920.webp 1920w" sizes="(min-width: 768px) 55vw, calc(100vw - 32px)" alt="Кафе и цветочный магазин на первом этаже дома" loading="lazy" decoding="async"></div>
         <div class="adv__body">
-          <h3 class="h3">Коммерция на первом этаже</h3>
+          <h3 class="h3">Всё нужное рядом: 2&nbsp;минуты до&nbsp;всех сервисов</h3>
           <p>Аптеки, ПВЗ, кофейни, пекарни, магазины</p>
         </div>
       </article>
@@ -228,9 +219,10 @@
         <p class="eyebrow ani-fade">Квартиры</p>
         <h2 class="h2 split" id="plans-title">Планировочные решения и&nbsp;отделка</h2>
         <p class="plans__lead ani-fade">Квартиры разной комнатности с&nbsp;просторными кухнями-гостиными. В&nbsp;квартирах нет лишних выступов и&nbsp;пилонов — каждый квадратный метр используется эффективно</p>
-        <div class="finish ani-fade">
+        <a class="finish ani-fade" href="#finish" data-scroll>
           <p>Два варианта отделки — <span class="u-line">предчистовая и&nbsp;чистовая</span></p>
-        </div>
+          <svg class="ico"><use href="#i-arrow"/></svg>
+        </a>
       </div>
 
       <div class="plan-card ani-rise">
@@ -264,6 +256,49 @@
           <button class="btn btn--outline" type="button" data-modal="price">Узнать цену</button>
         </div>
         <p class="plan-card__note">Получите ещё больше планировок с&nbsp;ценами под ваш сценарий жизни</p>
+      </div>
+    </div>
+
+    <!-- Отделка: чистовая (2 варианта, фото) и предчистовая -->
+    <div class="wrap fin" id="finish">
+      <p class="eyebrow ani-fade">Отделка</p>
+      <h3 class="h2 split fin__title">Чистовая или предчистовая отделка</h3>
+
+      <div class="fin__clean">
+        <div class="fin__media ani-rise">
+          <div class="fin__shots">
+            <img class="fin__shot is-active" id="fs1" src="assets/img/finish-light.webp" width="1167" height="569" alt="Чистовая отделка в светлой гамме: комната до и после расстановки мебели" loading="lazy" decoding="async">
+            <img class="fin__shot" id="fs2" src="assets/img/finish-warm.webp" width="1167" height="569" alt="Чистовая отделка в тёплой гамме: комната до и после расстановки мебели" loading="lazy" decoding="async">
+          </div>
+          <div class="tabs fin__tabs" role="tablist" aria-label="Варианты чистовой отделки">
+            <span class="tabs__ind" aria-hidden="true"></span>
+            <button class="tab" role="tab" id="ft1" aria-controls="fs1" aria-selected="true">Светлая гамма</button>
+            <button class="tab" role="tab" id="ft2" aria-controls="fs2" aria-selected="false" tabindex="-1">Тёплая гамма</button>
+          </div>
+        </div>
+        <div class="fin__body ani-fade">
+          <h4 class="fin__name">Чистовая</h4>
+          <p class="fin__lead">Два варианта отделки на&nbsp;выбор</p>
+          <ul class="fin__list">
+            <li>Ламинат 33&nbsp;класса</li>
+            <li>Флизелиновые обои под покраску</li>
+            <li>Розетки и&nbsp;потолочные светильники</li>
+            <li>Белые межкомнатные двери и&nbsp;матовые потолки</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fin__pre ani-rise">
+        <div class="fin__pre-head">
+          <h4 class="fin__name">Предчистовая</h4>
+          <p class="fin__lead">Основа для ремонта по&nbsp;вашему дизайн-проекту</p>
+        </div>
+        <ul class="fin__list fin__list--grid">
+          <li>Ровные оштукатуренные стены</li>
+          <li>Готовая стяжка пола</li>
+          <li>Разведённые инженерные коммуникации, в&nbsp;том числе выводы под&nbsp;розетки</li>
+          <li>Входная дверь с&nbsp;МДФ-покрытием&nbsp;— менять не&nbsp;придётся</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -406,13 +441,29 @@
         <li><button class="time" type="button" data-key="clinic"><span class="time__v"><b data-count="15">15</b> минут</span><svg class="time__arr"><use href="#i-arrow"/></svg><span class="time__o">Октябрьская врачебная амбулатория</span></button></li>
       </ol>
 
-      <div class="infra">
-        <h3 class="infra__title">Инфраструктура проекта</h3>
-        <ul class="infra__list">
-          <li class="ani-rise"><b>2&nbsp;км</b><span>прогулочный бульвар</span></li>
-          <li class="ani-rise"><b>4</b><span>детско-спортивные площадки</span></li>
-          <li class="ani-rise"><b>до&nbsp;9</b><span>квартир на&nbsp;этаже</span></li>
-          <li class="ani-rise"><b>8</b><span>секций</span></li>
+      <div class="company">
+        <h3 class="company__title">О компании</h3>
+        <ul class="trust__list">
+          <li class="trust__item trust__item--dev ani-rise">
+            <svg class="trust__talan" role="img" aria-label="Талан"><use href="#talan-logo"/></svg>
+            <span class="trust__label">Федеральный девелопер «Талан»</span>
+          </li>
+          <li class="trust__item ani-rise">
+            <span class="trust__num" data-count="12">12</span>
+            <span class="trust__label">городов присутствия</span>
+          </li>
+          <li class="trust__item ani-rise">
+            <span class="trust__num trust__num--long">&gt;&nbsp;47&nbsp;000</span>
+            <span class="trust__label">жителей живут в&nbsp;наших домах</span>
+          </li>
+          <li class="trust__item ani-rise">
+            <span class="trust__num"><span data-count="32">32</span>&nbsp;га</span>
+            <span class="trust__label">площадь района «Город-Парк»</span>
+          </li>
+          <li class="trust__item ani-rise">
+            <span class="trust__num">IV&nbsp;кв. 2027&nbsp;г.</span>
+            <span class="trust__label">сдача 1 очереди</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -637,7 +688,7 @@
   </div>
 </dialog>
 
-<!-- Окно с квизом (кнопка в «Условиях покупки»). Сам квиз скрипт копирует из блока 7 -->
+<!-- Окно с квизом (кнопки на первом экране и в «Условиях покупки»). Сам квиз скрипт копирует из блока 7 -->
 <dialog class="modal modal--quiz" id="modal-quiz" aria-labelledby="quiz-pop-title">
   <div class="modal__box">
     <button class="modal__close" type="button" data-close aria-label="Закрыть"><svg class="ico"><use href="#i-close"/></svg></button>

@@ -470,8 +470,8 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .hdr__in > * { animation: gp-drop .8s var(--ease-expo) .3s backwards; }
 @media (min-width: 1024px) { .hero__plaque { animation-name: gp-left; } }
 
-/* ---------- 3. Цифры доверия ---------- */
-.trust {
+/* ---------- 3. Инфраструктура проекта (зелёная плашка .infra на белой подложке) ---------- */
+.strip {
   position: relative;
   z-index: 3;
   margin-top: -28px;
@@ -479,6 +479,10 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   border-radius: 28px 28px 0 0;
   background: var(--paper);
 }
+.strip .infra { max-width: var(--maxw); margin-inline: auto; }
+
+/* Цифры о компании (карточки, переехали в «Расположение») */
+.company__title { margin-bottom: 16px; font-size: 24px; line-height: 1.2; color: var(--green-deep); }
 .trust__list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -502,20 +506,23 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .trust__talan { width: 108px; height: 20px; fill: var(--green); flex: none; }
 .trust__num { font-size: 40px; font-weight: 600; line-height: 1; letter-spacing: -.02em; color: var(--green); font-variant-numeric: lining-nums tabular-nums; }
 .trust__item:last-child .trust__num { font-size: 26px; line-height: 1.1; }
+.trust__num--long { font-size: 30px; }
 .trust__label { font-size: 14px; line-height: 1.35; color: var(--ink-soft); }
 .trust__item--dev .trust__label { font-size: 15px; font-weight: 600; color: var(--ink); }
 @media (min-width: 768px) {
-  .trust { margin-top: -36px; border-radius: 36px 36px 0 0; padding-top: 32px; }
+  .strip { margin-top: -36px; border-radius: 36px 36px 0 0; padding-top: 32px; }
   .trust__list { grid-template-columns: repeat(4, 1fr); }
 }
 @media (min-width: 1024px) {
-  .trust { margin-top: 0; border-radius: 0; padding-top: 32px; }
+  .strip { margin-top: 0; border-radius: 0; padding-top: 32px; }
   .trust__list { grid-template-columns: 1.25fr repeat(4, 1fr); gap: 12px; }
   .trust__item { min-height: 168px; padding: 24px 22px 22px; border-radius: 24px; }
   .trust__item--dev { grid-column: auto; flex-direction: column; align-items: flex-start; justify-content: space-between; }
   .trust__talan { width: 140px; height: 26px; }
   .trust__num { font-size: clamp(44px, 3.4vw, 60px); }
   .trust__item:last-child .trust__num { font-size: clamp(28px, 2.1vw, 36px); }
+  .trust__num--long { font-size: clamp(36px, 2.8vw, 50px); }
+  .company__title { margin-bottom: 20px; font-size: 28px; }
 }
 
 /* ---------- 4. О проекте ---------- */
@@ -532,7 +539,11 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .about__lead .w--brand { color: var(--green); font-weight: 600; }
 .motion .about__lead .w { color: #8A918C; }
 .motion .about__lead .w--brand { color: #6C977A; }
-@media (min-width: 1024px) { .about { padding: 128px 0 16px; } }
+.about__text { display: grid; gap: 14px; max-width: 60ch; margin-top: 28px; font-size: 17px; color: var(--ink-soft); text-wrap: pretty; }
+@media (min-width: 1024px) {
+  .about { padding: 128px 0 16px; }
+  .about__text { margin: 48px 0 0 auto; font-size: 19px; }
+}
 
 /* Раскрытие двора через знак-тюльпан */
 .reveal { position: relative; height: 175vh; background: var(--sky-soft); }
@@ -615,6 +626,10 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .plans__grid { display: grid; gap: 32px; }
 .plans__lead { margin-top: 20px; max-width: 52ch; font-size: 17px; color: var(--ink-soft); }
 .finish {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   margin-top: 24px;
   padding: 18px 20px;
   border-radius: 20px;
@@ -622,7 +637,11 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   font-size: 17px;
   font-weight: 600;
   color: var(--green-deep);
+  transition: background-color 220ms var(--ease-out);
 }
+.finish .ico { color: var(--green); transform: rotate(90deg); transition: transform .5s var(--spring); }
+.finish:hover { background: #E3F0E7; }
+.finish:hover .ico { transform: rotate(90deg) translateX(4px); }
 .plan-card {
   padding: 12px;
   border: 1px solid var(--line);
@@ -702,6 +721,41 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .plans__grid { grid-template-columns: 1fr 1.05fr; align-items: center; gap: 72px; }
   .plans__lead { font-size: 18px; }
   .panel img { height: 420px; }
+}
+
+/* Отделка: чистовая (2 варианта) и предчистовая */
+.fin { margin-top: 72px; scroll-margin-top: calc(var(--hdr-h) + 16px); }
+.fin__title { max-width: 18ch; margin-bottom: 28px; }
+.fin__clean { display: grid; gap: 24px; }
+.fin__shots { display: grid; overflow: hidden; border-radius: 24px; background: var(--sky-soft); }
+.fin__shot { grid-area: 1 / 1; width: 100%; opacity: 0; transition: opacity 420ms var(--ease-out); }
+.fin__shot.is-active { opacity: 1; }
+.fin__tabs { max-width: 380px; margin-top: 12px; }
+.fin__name { margin: 0 0 10px; font-size: 24px; font-weight: 600; line-height: 1.2; color: var(--green-deep); }
+.fin__lead { font-size: 17px; color: var(--ink-soft); text-wrap: pretty; }
+.fin__list { display: grid; gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; }
+.fin__list li { position: relative; padding-left: 32px; line-height: 1.45; }
+.fin__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 1px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M5.5 11.5l3.7 3.7L16.5 8' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+}
+.fin__pre { margin-top: 24px; padding: 24px 20px; border-radius: 28px; background: var(--green-tint); }
+.fin__pre .fin__list { margin-top: 18px; }
+@media (min-width: 560px) { .fin__list--grid { grid-template-columns: 1fr 1fr; gap: 14px 28px; } }
+@media (min-width: 768px) { .fin__pre { padding: 32px; border-radius: 32px; } }
+@media (min-width: 1024px) {
+  .fin { margin-top: 128px; }
+  .fin__title { margin-bottom: 48px; }
+  .fin__clean { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; gap: 56px; }
+  .fin__shots { border-radius: 32px; }
+  .fin__name { font-size: 32px; margin-bottom: 14px; }
+  .fin__lead, .fin__list li { font-size: 18px; }
+  .fin__pre { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 56px; margin-top: 32px; padding: 40px 48px; }
+  .fin__pre .fin__list { margin-top: 4px; }
 }
 
 /* ---------- 7. Квиз ---------- */
@@ -1074,7 +1128,8 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .map { grid-area: map; align-self: stretch; aspect-ratio: auto; min-height: 600px; max-height: none; }
   .times { grid-area: times; }
   .time { grid-template-columns: 132px 22px 1fr; padding: 16px 22px; }
-  .infra { grid-area: infra; padding: 40px 48px; border-radius: 32px; }
+  .company { grid-area: infra; }
+  .infra { padding: 40px 48px; border-radius: 32px; }
   .infra__list b { font-size: 48px; }
   .infra__list span { font-size: 16px; }
   .pin { width: 44px; height: 44px; margin: -22px 0 0 -22px; }
